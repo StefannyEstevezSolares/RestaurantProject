@@ -11,45 +11,60 @@ const inputName = document.getElementById("ingredient-name");
 const inputDescription = document.getElementById("ingredient-description");
 const inputQuantity = document.getElementById("ingredient-quantity");
 const inputUnit = document.getElementById("ingredient-unit");
-
-const btnMenu = document.getElementById("btn-menu");
-const sidebar = document.querySelector(".sidebar");
+const btnLogoutMobile = document.getElementById("btn-logout-mobile");
 const btnLogout = document.getElementById("btn-logout");
 
 // Data
 
-let ingredients = [
+let ingredients =
+JSON.parse(
+localStorage.getItem("ingredients")
+);
 
-    {
-        id:1,
-        code:"ING001",
-        name:"Beef",
-        description:"Fresh beef",
-        quantity:12,
-        unit:"kg"
-    },
+if(!ingredients){
 
-    {
-        id:2,
-        code:"ING002",
-        name:"Onion",
-        description:"White onion",
-        quantity:8,
-        unit:"kg"
-    },
+    ingredients=[
 
-    {
-        id:3,
-        code:"ING003",
-        name:"Chocolate",
-        description:"Milk chocolate",
-        quantity:15,
-        unit:"bars"
-    }
+        {
+            id:1,
+            code:"ING001",
+            name:"Beef",
+            description:"Fresh beef",
+            quantity:12,
+            unit:"kg"
+        },
 
-];
+        {
+            id:2,
+            code:"ING002",
+            name:"Onion",
+            description:"White onion",
+            quantity:8,
+            unit:"kg"
+        },
 
-// Utility Functions
+        {
+            id:3,
+            code:"ING003",
+            name:"Chocolate",
+            description:"Milk chocolate",
+            quantity:15,
+            unit:"bars"
+        }
+
+    ];
+
+    localStorage.setItem(
+
+        "ingredients",
+
+        JSON.stringify(ingredients)
+
+    );
+
+}
+
+// Functions
 
 function clearIngredients(){
 
@@ -79,13 +94,11 @@ function closeModal(){
 
 }
 
-function toggleMenu(){
 
-    sidebar.classList.toggle("show-menu");
 
-}
+function logout(event){
 
-function logout(){
+    event.preventDefault();
 
     const confirmLogout = confirm("Are you sure you want to logout?");
 
@@ -131,6 +144,7 @@ function displayIngredients(list){
             if(ingredient.quantity > 0){
 
                 ingredient.quantity--;
+                saveStorage();
                 displayIngredients(ingredients);
 
             }
@@ -143,6 +157,7 @@ function displayIngredients(list){
         btnPlus.addEventListener("click",function(){
 
             ingredient.quantity++;
+            saveStorage();
             displayIngredients(ingredients);
 
         });
@@ -151,12 +166,12 @@ function displayIngredients(list){
         btnDelete.textContent = "🗑";
 
         btnDelete.addEventListener("click",function(){
-
             ingredients = ingredients.filter(item => {
-
+                
                 return item.id !== ingredient.id;
-
             });
+
+            saveStorage();
 
             displayIngredients(ingredients);
 
@@ -176,6 +191,15 @@ function displayIngredients(list){
 }
 
 // Save Ingredient
+
+function saveStorage(){
+
+    localStorage.setItem(
+        "ingredients",
+        JSON.stringify(ingredients)
+    );
+
+}
 
 function saveIngredient(){
 
@@ -205,9 +229,12 @@ function saveIngredient(){
 
     ingredients.push(ingredient);
 
+    saveStorage();
+
     displayIngredients(ingredients);
 
     clearForm();
+
     closeModal();
 
 }
@@ -217,36 +244,33 @@ function saveIngredient(){
 function registerEvents(){
 
     btnAddIngredient.addEventListener("click",openModal);
-
     btnCancel.addEventListener("click",function(){
 
         clearForm();
+
         closeModal();
 
     });
 
     btnSave.addEventListener("click",saveIngredient);
 
-    if(btnMenu){
-
-        btnMenu.addEventListener("click",toggleMenu);
-
-    }
-
     if(btnLogout){
-
         btnLogout.addEventListener("click",logout);
 
     }
 
+    if(btnLogoutMobile){
+        btnLogoutMobile.addEventListener("click",logout);
+
+    }
 }
 
 // Execution
 
 function execution(){
 
-    registerEvents();
     displayIngredients(ingredients);
+    registerEvents();
 
 }
 
