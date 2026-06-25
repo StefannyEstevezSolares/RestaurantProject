@@ -367,9 +367,28 @@ body{
     .bottom-nav{
     display:none;
 
+    }
+    .ingredient-item{
+
+    padding:1rem;
+
 }
+
+#ingredients-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+    margin:1rem 0;
+
+    max-height:220px;
+    overflow-y:auto;
+
+}
+
+    }
     
-}
+
 
 /* MODAL */
 
@@ -389,13 +408,18 @@ body{
 
     width:500px;
     max-width:90%;
+    max-height:90vh;
+    overflow-y:auto;
+
     background:var(--kirby-cloud);
     border:3px solid var(--kirby-pink);
     border-radius:20px;
     padding:2rem;
+
     display:flex;
     flex-direction:column;
     gap:1rem;
+
     box-shadow:0 10px 25px var(--dream-shadow);
 
 }
@@ -476,3 +500,97 @@ body{
 
 }
 
+
+
+#dish-ingredient{
+
+    padding:12px;
+    border:2px solid var(--kirby-blue);
+    border-radius:10px;
+    background:var(--kirby-cloud);
+    color:var(--dream-text);
+
+}
+
+/* DISHES */
+
+#ingredients-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+    margin:1rem 0;
+
+}
+
+.ingredient-item{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:.8rem 1rem;
+    background:var(--kirby-cloud);
+    border:2px solid var(--dream-border);
+    border-radius:12px;
+
+}
+
+.ingredient-item p{
+
+    font-weight:bold;
+    color:var(--dream-text);
+
+}
+
+.ingredient-item button{
+
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:var(--kirby-blue);
+    color:var(--dream-text);
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.ingredient-item button:hover{
+
+    background:var(--kirby-pink);
+
+}
+
+#selected-ingredients{
+
+    margin-top:1rem;
+    padding:1rem;
+    min-height:70px;
+    max-height:150px;
+    overflow-y:auto;
+    background:var(--kirby-cloud);
+    border:2px dashed var(--dream-border);
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+
+}
+
+#selected-ingredients p{
+
+    padding:.5rem .8rem;
+    background:var(--kirby-mint);
+    border-radius:8px;
+    color:var(--dream-text);
+    font-weight:bold;
+
+}
+
+.modal-content h3{
+
+    margin-top:1rem;
+    color:var(--dream-text);
+
+}

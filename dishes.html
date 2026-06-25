@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dishes</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body>
+
+    <header class="header-mobile">
+
+        <h1>Restaurant App</h1>
+
+    </header>
+
+    <nav class="sidebar">
+
+        <h2>Restaurant App</h2>
+
+        <ul>
+
+            <li>
+
+                <a href="stock.html">
+
+                    Stock
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="dishes.html">
+
+                    Dishes
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="orders.html">
+
+                    Orders
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a id="btn-logout" href="#">
+
+                    Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <main class="container">
+
+        <section class="dishes-section">
+
+            <div class="section-header">
+
+                <h2>Dishes</h2>
+
+            </div>
+
+            <div
+                id="dishes-container"
+                class="ingredients-grid">
+
+            </div>
+
+            <button
+                id="btn-add-dish"
+                class="add-btn">
+
+                + Add New Dish
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+
+        <a href="stock.html">
+
+            📦
+
+            <span>Stock</span>
+
+        </a>
+
+        <a href="dishes.html">
+
+            🍔
+
+            <span>Dishes</span>
+
+        </a>
+
+        <a href="orders.html">
+
+            📋
+
+            <span>Orders</span>
+
+        </a>
+
+        <a id="btn-logout-mobile" href="#">
+
+            🚪
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+    <!-- Modal -->
+
+    <div
+        id="dish-modal"
+        class="modal">
+
+        <div class="modal-content">
+
+            <h2>Add Dish</h2>
+
+            <input
+                id="dish-code"
+                type="text"
+                placeholder="Code">
+
+            <input
+                id="dish-name"
+                type="text"
+                placeholder="Name">
+
+            <input
+                id="dish-description"
+                type="text"
+                placeholder="Description">
+
+            <input
+                id="dish-price"
+                type="number"
+                placeholder="Price">
+
+             <h3>Available Ingredients</h3>
+
+            <div id="ingredients-list"></div>
+
+            <h3>Selected Ingredients</h3>
+            
+
+            <div
+                id="selected-ingredients"
+                class="selected-ingredients">
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button id="btn-save">
+
+                    Save
+
+                </button>
+
+                <button id="btn-cancel">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./js/dishes.js"></script>
+
+</body>
+
+</html>
