@@ -62,6 +62,31 @@ The colors were inspired in Kirby's design since it's a friendly character, and 
 <img src="./screenshots/orders.png" width="650">
 
 ---
+# 📸 Application Mobile Screenshots
+
+<table>
+<tr>
+<td align="center">
+<img src="./screenshots/mobilelogin.png" width="180"><br>
+<b>Login</b>
+</td>
+
+<td align="center">
+<img src="./screenshots/mobilestock.png" width="180"><br>
+<b>Stock</b>
+</td>
+
+<td align="center">
+<img src="./screenshots/mobiledishes.png" width="180"><br>
+<b>Dishes</b>
+</td>
+
+<td align="center">
+<img src="./screenshots/mobileorders.png" width="180"><br>
+<b>Orders</b>
+</td>
+</tr>
+</table>
 
 # ✨ Features
 
