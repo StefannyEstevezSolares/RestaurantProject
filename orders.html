@@ -1,191 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Restaurant Orders</title>
-
     <link rel="stylesheet" href="./css/styles.css">
-
 </head>
-
 <body>
-
     <header class="header-mobile">
         <h1>Restaurant App</h1>
     </header>
+
     <nav class="sidebar">
         <h2>Restaurant App</h2>
-        
         <ul>
             <li>
-
-                <a href="stock.html">
-
-                    Stock
-
-                </a>
-
+                <a href="stock.html">Stock</a>
             </li>
-
             <li>
-
-                <a href="dishes.html">
-
-                    Dishes
-
-                </a>
-
+                <a href="dishes.html">Dishes</a>
             </li>
-
             <li class="active">
-
-                <a href="orders.html">
-
-                    Orders
-
-                </a>
-
+                <a href="orders.html">Orders</a>
             </li>
-
             <li>
-
-                <a
-                    id="btn-logout"
-                    href="#">
-
-                    Logout
-
-                </a>
-
+                <a id="btn-logout" href="#">Logout</a>
             </li>
-
         </ul>
-
     </nav>
 
     <main class="container">
-
         <section class="orders-section">
-
             <div class="section-header">
-
                 <h2>Orders</h2>
-
             </div>
 
-            <div
-                id="orders-container"
-                class="ingredients-grid">
+            <div id="orders-container" class="ingredients-grid"></div>
 
-            </div>
-
-            <button
-                id="btn-add-order"
-                class="add-btn">
-
+            <button id="btn-add-order" class="add-btn">
                 + New Order
-
             </button>
-
         </section>
-
     </main>
 
     <nav class="bottom-nav">
-
         <a href="stock.html">
-
             📦
-
             <span>Stock</span>
-
         </a>
 
         <a href="dishes.html">
-
             🍔
-
             <span>Dishes</span>
-
         </a>
 
         <a href="orders.html">
-
             📋
-
             <span>Orders</span>
-
         </a>
 
-        <a
-            id="btn-logout-mobile"
-            href="#">
-
+        <a id="btn-logout-mobile" href="#">
             🚪
-
             <span>Logout</span>
-
         </a>
-
     </nav>
 
-    <!-- Modal -->
-
-    <div
-        id="order-modal"
-        class="modal">
-
+    <div id="order-modal" class="modal">
         <div class="modal-content">
-
             <h2>New Order</h2>
 
-            <input
-                id="customer-name"
-                type="text"
-                placeholder="Customer Name">
+            <input id="customer-name" type="text" placeholder="Customer Name">
 
-            <input
-                id="customer-phone"
-                type="text"
-                placeholder="Phone">
+            <input id="customer-phone" type="text" placeholder="Phone">
 
-            <select id="dish-select">
+            <select id="dish-select"></select>
 
-            </select>
-
-            <input
-                id="dish-quantity"
-                type="number"
-                min="1"
-                value="1"
-                placeholder="Quantity">
+            <input id="dish-quantity" type="number" min="1" value="1" placeholder="Quantity">
 
             <div class="modal-actions">
-
-                <button id="btn-save">
-
-                    Save
-
-                </button>
-
-                <button id="btn-cancel">
-
-                    Cancel
-
-                </button>
-
+                <button id="btn-save">Save</button>
+                <button id="btn-cancel">Cancel</button>
             </div>
-
         </div>
-
     </div>
 
     <script src="./js/orders.js"></script>
-
 </body>
-
 </html>
