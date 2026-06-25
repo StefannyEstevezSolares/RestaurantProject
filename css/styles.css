@@ -1,92 +1,244 @@
+:root{
+
+    --kirby-sky:#eefbff;
+    --kirby-cloud:#ffffff;
+    --kirby-pink:#ffc4df;
+    --kirby-blush:#ff9fcb;
+    --kirby-blue:#ccefff;
+    --kirby-mint:#dcfff4;
+    --kirby-star:#ffe89c;
+
+    --dream-text:#66536b;
+    --dream-shadow:#e6d5e7;
+    --dream-border:#edd6ea;
+
+}
+
+/* Reset */
+
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
 
 body{
-    font-family:sans-serif;
-    background:#f5f5f5;
+
+    font-family:Arial,sans-serif;
+    background:var(--kirby-sky);
+    color:var(--dream-text);
+
 }
 
 /* MOBILE */
 
 .header-mobile{
+
     display:flex;
     align-items:center;
     gap:1rem;
     padding:1rem;
-    background:white;
-    border-bottom:1px solid #ddd;
+    background:var(--kirby-pink);
+    border-bottom:2px solid var(--dream-border);
+
 }
 
 .menu-btn{
+
     border:none;
     background:none;
     font-size:1.5rem;
+    color:var(--dream-text);
+    cursor:pointer;
+
 }
 
-.sidebar{
-    display:none;
-}
 
 .container{
+
     padding:1rem;
+
 }
 
 .section-header{
+
     margin:1.5rem 0 1rem;
+
+}
+
+.section-header h2{
+
+    color:var(--dream-text);
+
 }
 
 .ingredients-grid{
+
     display:grid;
     gap:1rem;
+
 }
 
 .ingredient-card{
+
     display:flex;
     align-items:center;
     gap:1rem;
-    background:white;
+    background:var(--kirby-cloud);
     padding:1rem;
-    border-radius:12px;
+    border-radius:16px;
+    border:2px solid var(--dream-border);
+    box-shadow:0 6px 12px var(--dream-shadow);
+
 }
 
 .ingredient-image{
+
     width:60px;
     height:60px;
-    background:#ddd;
-    border-radius:8px;
+    border-radius:10px;
+    background:linear-gradient(
+        135deg,
+        var(--kirby-pink),
+        var(--kirby-blue)
+    );
+
 }
 
 .ingredient-info{
+
     flex:1;
+
+}
+
+.ingredient-info h3{
+
+    color:var(--dream-text);
+    margin-bottom:.3rem;
+
+}
+
+.ingredient-info p{
+
+    color:var(--dream-text);
+
 }
 
 .actions{
+
     display:flex;
     gap:.5rem;
+
 }
 
 .actions button{
+
     width:35px;
     height:35px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     cursor:pointer;
+    background:var(--kirby-blue);
+    color:var(--dream-text);
+    transition:.3s;
+
+}
+
+.actions button:hover{
+
+    background:var(--kirby-pink);
+
 }
 
 .add-btn{
+
     margin-top:2rem;
     width:100%;
     padding:1rem;
     border:none;
-    border-radius:12px;
-    background:black;
-    color:white;
+    border-radius:14px;
+    background:linear-gradient(
+        90deg,
+        var(--kirby-blush),
+        var(--kirby-pink),
+        var(--kirby-blue)
+    );
+    background-size:250%;
+    color:var(--dream-text);
     font-weight:bold;
     cursor:pointer;
+    transition:.4s;
+
 }
+
+.add-btn:hover{
+
+    background-position:right;
+
+}
+
+.sidebar{
+
+    display:none;
+    background:linear-gradient(
+        180deg,
+        var(--kirby-pink),
+        var(--kirby-blue)
+    );
+
+}
+
+.sidebar.show-menu{
+
+    display:block;
+
+}
+
+.sidebar h2{
+
+    color:var(--dream-text);
+    text-align:center;
+    margin:1rem 0;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    margin-bottom:.7rem;
+    padding:1rem;
+    border-radius:12px;
+
+}
+
+.sidebar li:hover{
+
+    background:var(--kirby-cloud);
+
+}
+
+.sidebar a{
+
+    display:block;
+    text-decoration:none;
+    color:var(--dream-text);
+    font-weight:bold;
+
+}
+
+.active{
+
+    background:var(--kirby-cloud);
+
+}
+
 
 /* DESKTOP */
 
@@ -102,11 +254,24 @@ body{
     }
 
     .sidebar{
-        display:block;
-        min-height:100vh;
-        background:white;
-        border-right:1px solid #ddd;
-        padding:2rem;
+    display:block;
+    position:static;
+    width:auto;
+    min-height:100vh;
+    background:linear-gradient(
+        180deg,
+        var(--kirby-pink),
+        var(--kirby-blue)
+    );
+    border-right:3px solid var(--dream-border);
+    padding:2rem;
+
+}
+
+    .sidebar h2{
+        color:var(--dream-text);
+        text-align:center;
+        margin-bottom:2rem;
     }
 
     .sidebar ul{
@@ -115,13 +280,25 @@ body{
     }
 
     .sidebar li{
+        margin-bottom:.7rem;
         padding:1rem;
-        border-radius:8px;
-        margin-bottom:.5rem;
+        border-radius:12px;
+        transition:.3s;
+    }
+
+    .sidebar li:hover{
+        background:var(--kirby-cloud);
+    }
+
+    .sidebar a{
+        display:block;
+        text-decoration:none;
+        color:var(--dream-text);
+        font-weight:bold;
     }
 
     .active{
-        background:#ececec;
+        background:var(--kirby-cloud);
     }
 
     .container{
@@ -135,4 +312,111 @@ body{
     .ingredient-card{
         min-height:120px;
     }
+
 }
+
+/* MODAL */
+
+.modal{
+
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(102,83,107,.45);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+
+}
+
+.modal-content{
+
+    width:500px;
+    max-width:90%;
+    background:var(--kirby-cloud);
+    border:3px solid var(--kirby-pink);
+    border-radius:20px;
+    padding:2rem;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    box-shadow:0 10px 25px var(--dream-shadow);
+
+}
+
+.modal-content h2{
+
+    text-align:center;
+    color:var(--dream-text);
+
+}
+
+.modal-content input{
+
+    padding:12px;
+    border:2px solid var(--kirby-blue);
+    border-radius:10px;
+    background:var(--kirby-cloud);
+    color:var(--dream-text);
+    font-size:1rem;
+    outline:none;
+
+}
+
+.modal-content input:focus{
+
+    border-color:var(--kirby-blush);
+
+}
+
+.modal-actions{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:1rem;
+    margin-top:.5rem;
+
+}
+
+.modal-actions button{
+
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+#btn-save{
+
+    background:linear-gradient(
+        90deg,
+        var(--kirby-blush),
+        var(--kirby-pink)
+    );
+
+    color:var(--dream-text);
+
+}
+
+#btn-save:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#btn-cancel{
+
+    background:var(--kirby-blue);
+    color:var(--dream-text);
+
+}
+
+#btn-cancel:hover{
+
+    background:var(--kirby-mint);
+
+}
+

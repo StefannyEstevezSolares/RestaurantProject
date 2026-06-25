@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Stock</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
 
     <header class="header-mobile">
-        <button class="menu-btn">☰</button>
+        <button id="btn-menu" class="menu-btn">☰</button>
         <h1>Stock</h1>
     </header>
 
     <nav class="sidebar">
+
         <h2>Restaurant App</h2>
 
         <ul>
-            <li>🏠 Home</li>
-            <li>🍔 Dishes</li>
-            <li class="active">📦 Stock</li>
-            <li>📋 Orders</li>
+
+            <li>
+                <a href="index.html"> Home</a>
+            </li>
+
+            <li>
+                <a href="dishes.html">Dishes</a>
+            </li>
+
+            <li class="active">
+                <a href="stock.html"> Stock</a>
+            </li>
+
+            <li>
+                <a href="orders.html"> Orders</a>
+            </li>
+
+            <li>
+                <a id="btn-logout" href="#"> Logout</a>
+            </li>
+
         </ul>
+
     </nav>
 
     <main class="container">
@@ -29,73 +50,12 @@
         <section class="stock-section">
 
             <div class="section-header">
-                <h2>Savory Food Ingredients</h2>
+                <h2>Inventory</h2>
             </div>
 
-            <div class="ingredients-grid">
+            <div id="stock-container" class="ingredients-grid"></div>
 
-                <article class="ingredient-card">
-
-                    <div class="ingredient-image"></div>
-
-                    <div class="ingredient-info">
-                        <h3>Beef</h3>
-                        <p>12 kg</p>
-                    </div>
-
-                    <div class="actions">
-                        <button>−</button>
-                        <button>+</button>
-                        <button>🗑</button>
-                    </div>
-
-                </article>
-
-                <article class="ingredient-card">
-
-                    <div class="ingredient-image"></div>
-
-                    <div class="ingredient-info">
-                        <h3>Onion</h3>
-                        <p>8 kg</p>
-                    </div>
-
-                    <div class="actions">
-                        <button>−</button>
-                        <button>+</button>
-                        <button>🗑</button>
-                    </div>
-
-                </article>
-
-            </div>
-
-            <div class="section-header">
-                <h2>Sweet Food Ingredients</h2>
-            </div>
-
-            <div class="ingredients-grid">
-
-                <article class="ingredient-card">
-
-                    <div class="ingredient-image"></div>
-
-                    <div class="ingredient-info">
-                        <h3>Chocolate</h3>
-                        <p>15 bars</p>
-                    </div>
-
-                    <div class="actions">
-                        <button>−</button>
-                        <button>+</button>
-                        <button>🗑</button>
-                    </div>
-
-                </article>
-
-            </div>
-
-            <button class="add-btn">
+            <button id="btn-add-ingredient" class="add-btn">
                 + Add New Ingredient
             </button>
 
@@ -103,5 +63,31 @@
 
     </main>
 
+    <!-- Modal -->
+
+    <div id="ingredient-modal" class="modal">
+
+        <div class="modal-content">
+
+            <h2>Add Ingredient</h2>
+
+            <input id="ingredient-code" type="text" placeholder="Code">
+            <input id="ingredient-name" type="text" placeholder="Name">
+            <input id="ingredient-description" type="text" placeholder="Description">
+            <input id="ingredient-quantity" type="number" placeholder="Quantity">
+            <input id="ingredient-unit" type="text" placeholder="Unit">
+            <div class="modal-actions">
+
+                <button id="btn-save">Save</button>
+                <button id="btn-cancel">Cancel</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./js/stock.js"></script>
+
 </body>
+
 </html>
