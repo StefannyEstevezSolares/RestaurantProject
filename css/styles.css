@@ -796,3 +796,21 @@ input:focus{
     object-fit:contain;
 
 }
+
+@media(min-width:1024px){
+
+    body.login-page{
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+    }
+
+    .login-card{
+
+        width:500px;
+
+    }
+
+}
