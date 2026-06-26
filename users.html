@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Dishes</title>
+    <title>Restaurant Users</title>
 
     <link rel="stylesheet" href="./css/styles.css">
 
@@ -52,10 +52,10 @@
                     Orders
 
                 </a>
+        
 
             </li>
 
-            
              <li>
 
                 <a href="users.html">
@@ -87,7 +87,7 @@
 
             <div class="section-header">
 
-                <h2>Dishes</h2>
+                <h2>Users</h2>
 
             </div>
 
@@ -101,7 +101,7 @@
                 id="btn-add-dish"
                 class="add-btn">
 
-                + Add New Dish
+                + Add New User
 
             </button>
 
@@ -135,7 +135,7 @@
 
         </a>
 
-         <a href="users.html">
+        <a href="users.html">
 
             📋
 
@@ -161,40 +161,36 @@
 
         <div class="modal-content">
 
-            <h2>Add Dish</h2>
+            <h2>Add User</h2>
 
             <input
-                id="dish-code"
+                id="user-code"
                 type="text"
                 placeholder="Code">
 
             <input
-                id="dish-name"
+                id="user-name"
                 type="text"
                 placeholder="Name">
 
             <input
-                id="dish-description"
+                id="user-id"
                 type="text"
-                placeholder="Description">
+                placeholder="ID Number">
 
             <input
-                id="dish-price"
+                id="user-phone"
                 type="number"
-                placeholder="Price">
+                placeholder="Phone Number">
 
-             <h3>Available Ingredients</h3>
+            <input
+                id="user-email"
+                type="email"
+                placeholder="E-mail">
+
+             <h3>What genders do you identify with?</h3>
 
             <div id="ingredients-list"></div>
-
-            <h3>Selected Ingredients</h3>
-            
-
-            <div
-                id="selected-ingredients"
-                class="selected-ingredients">
-
-            </div>
 
             <div class="modal-actions">
 
@@ -216,7 +212,7 @@
 
     </div>
 
-    <script src="./js/dishes.js"></script>
+    <script src="./js/users.js"></script>
 
 </body>
 
