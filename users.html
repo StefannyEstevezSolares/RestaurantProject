@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Restaurant Users</title>
 
     <link rel="stylesheet" href="./css/styles.css">
@@ -35,7 +36,7 @@
 
             </li>
 
-            <li class="active">
+            <li>
 
                 <a href="dishes.html">
 
@@ -52,24 +53,24 @@
                     Orders
 
                 </a>
-        
 
             </li>
 
-             <li>
+            <li class="active">
 
                 <a href="users.html">
 
                     Users
 
                 </a>
-        
 
             </li>
 
             <li>
 
-                <a id="btn-logout" href="#">
+                <a
+                    id="btn-logout"
+                    href="#">
 
                     Logout
 
@@ -83,7 +84,7 @@
 
     <main class="container">
 
-        <section class="dishes-section">
+        <section class="users-section">
 
             <div class="section-header">
 
@@ -92,13 +93,13 @@
             </div>
 
             <div
-                id="dishes-container"
+                id="users-container"
                 class="ingredients-grid">
 
             </div>
 
             <button
-                id="btn-add-dish"
+                id="btn-add-user"
                 class="add-btn">
 
                 + Add New User
@@ -137,13 +138,15 @@
 
         <a href="users.html">
 
-            📋
+            👤
 
             <span>Users</span>
 
         </a>
 
-        <a id="btn-logout-mobile" href="#">
+        <a
+            id="btn-logout-mobile"
+            href="#">
 
             🚪
 
@@ -156,7 +159,7 @@
     <!-- Modal -->
 
     <div
-        id="dish-modal"
+        id="user-modal"
         class="modal">
 
         <div class="modal-content">
@@ -169,28 +172,46 @@
                 placeholder="Code">
 
             <input
+                id="user-identification"
+                type="text"
+                placeholder="Identification">
+
+            <input
                 id="user-name"
                 type="text"
                 placeholder="Name">
 
             <input
-                id="user-id"
-                type="text"
-                placeholder="ID Number">
-
-            <input
                 id="user-phone"
-                type="number"
-                placeholder="Phone Number">
+                type="text"
+                placeholder="Phone">
 
             <input
                 id="user-email"
                 type="email"
-                placeholder="E-mail">
+                placeholder="Email">
 
-             <h3>What genders do you identify with?</h3>
+            <select id="user-gender">
 
-            <div id="ingredients-list"></div>
+                <option value="">
+
+                    Select Gender (Optional)
+
+                </option>
+
+                <option value="Female">
+
+                    Female
+
+                </option>
+
+                <option value="Male">
+
+                    Male
+
+                </option>
+
+            </select>
 
             <div class="modal-actions">
 

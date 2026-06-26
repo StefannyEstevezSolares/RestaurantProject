@@ -5,8 +5,7 @@ const btnAddOrder=document.getElementById("btn-add-order");
 const modal=document.getElementById("order-modal");
 const btnSave=document.getElementById("btn-save");
 const btnCancel=document.getElementById("btn-cancel");
-const inputCustomer=document.getElementById("customer-name");
-const inputPhone=document.getElementById("customer-phone");
+const selectCustomer=document.getElementById("customer-select");
 const selectDish=document.getElementById("dish-select");
 const inputQuantity=document.getElementById("dish-quantity");
 const btnLogout=document.getElementById("btn-logout");
@@ -31,9 +30,22 @@ JSON.parse(
 localStorage.getItem("ingredients")
 );
 
+
+
 if(!ingredients){
 
     ingredients=[];
+
+}
+
+let users=
+JSON.parse(
+localStorage.getItem("users")
+);
+
+if(!users){
+
+    users=[];
 
 }
 
@@ -75,9 +87,7 @@ function clearOrders(){
 
 function clearForm(){
 
-    inputCustomer.value="";
-
-    inputPhone.value="";
+    selectCustomer.selectedIndex=0;
 
     inputQuantity.value=1;
 
@@ -96,8 +106,8 @@ function openModal(){
 
     }
 
+    loadUsers();
     loadDishes();
-
     modal.style.display="flex";
 
 }
@@ -147,6 +157,21 @@ function loadDishes(){
 
 }
 
+//users
+
+function loadUsers(){
+
+    selectCustomer.replaceChildren();
+    users.forEach(function(user){
+        const option=
+        document.createElement("option");
+        option.value=user.id;
+        option.textContent=user.name;
+        selectCustomer.appendChild(option);
+
+    });
+
+}
 
 // Display Orders
 
@@ -246,19 +271,24 @@ function displayOrders(list){
 
 function saveOrder(){
 
-    if(
+    if(users.length===0){
 
-        inputCustomer.value===""||
-
-        inputPhone.value===""
-
-    ){
-
-        alert("Complete all fields");
-
+        alert("Create a user first");
+    
         return;
+    
+    }
+
+    const customerId=
+    Number(selectCustomer.value);
+    let selectedUser;
+    users.forEach(function(user){
+    if(user.id===customerId){
+        selectedUser=user;
 
     }
+
+});
 
     const dishId=
     Number(selectDish.value);
@@ -344,8 +374,8 @@ function saveOrder(){
     const order={
 
         id:Date.now(),
-        customer:inputCustomer.value,
-        phone:inputPhone.value,
+        customer:selectedUser.name,
+        phone:selectedUser.phone,
         dish:selectedDish.name,
         quantity:quantity,
         total:selectedDish.price*quantity,

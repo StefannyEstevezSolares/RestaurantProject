@@ -1,79 +1,54 @@
-const dishesContainer = document.getElementById("dishes-container");
-const btnAddDish = document.getElementById("btn-add-dish");
-const modal = document.getElementById("dish-modal");
-const btnSave = document.getElementById("btn-save");
-const btnCancel = document.getElementById("btn-cancel");
+// HTML Elements
 
-const inputCode = document.getElementById("dish-code");
-const inputName = document.getElementById("dish-name");
-const inputDescription = document.getElementById("dish-description");
-const inputPrice = document.getElementById("dish-price");
+const usersContainer=document.getElementById("users-container");
+const btnAddUser=document.getElementById("btn-add-user");
+const modal=document.getElementById("user-modal");
+const btnSave=document.getElementById("btn-save");
+const btnCancel=document.getElementById("btn-cancel");
 
-const ingredientsList = document.getElementById("ingredients-list");
-const selectedContainer = document.getElementById("selected-ingredients");
+const inputCode=document.getElementById("user-code");
+const inputIdentification=document.getElementById("user-identification");
+const inputName=document.getElementById("user-name");
+const inputPhone=document.getElementById("user-phone");
+const inputEmail=document.getElementById("user-email");
+const inputGender=document.getElementById("user-gender");
 
-const btnLogout = document.getElementById("btn-logout");
-const btnLogoutMobile = document.getElementById("btn-logout-mobile");
+const btnLogout=document.getElementById("btn-logout");
+const btnLogoutMobile=document.getElementById("btn-logout-mobile");
 
 // Data
 
-let ingredients =
-JSON.parse(localStorage.getItem("ingredients"));
+let users=
+JSON.parse(
+localStorage.getItem("users")
+);
 
-if(!ingredients){
+if(!users){
 
-    ingredients=[];
-
-}
-
-let dishes =
-JSON.parse(localStorage.getItem("dishes"));
-
-if(!dishes){
-
-    dishes=[];
+    users=[];
 
 }
-
-let selectedIngredients=[];
 
 // Functions
 
-function clearDishes(){
+function clearUsers(){
 
-    dishesContainer.replaceChildren();
-
-}
-
-function clearIngredientsList(){
-
-    ingredientsList.replaceChildren();
-
-}
-
-function clearSelected(){
-
-    selectedContainer.replaceChildren();
-
+    usersContainer.replaceChildren();
 
 }
 
 function clearForm(){
 
     inputCode.value="";
+    inputIdentification.value="";
     inputName.value="";
-    inputDescription.value="";
-    inputPrice.value="";
-
-    selectedIngredients=[];
-
-    clearSelected();
+    inputPhone.value="";
+    inputEmail.value="";
+    inputGender.value="";
 
 }
 
 function openModal(){
-
-    loadIngredients();
 
     modal.style.display="flex";
 
@@ -89,7 +64,8 @@ function logout(event){
 
     event.preventDefault();
 
-    const confirmLogout=confirm("Are you sure you want to logout?");
+    const confirmLogout=
+    confirm("Are you sure you want to logout?");
 
     if(confirmLogout){
 
@@ -102,64 +78,22 @@ function logout(event){
 function saveStorage(){
 
     localStorage.setItem(
-        "dishes",
-        JSON.stringify(dishes)
+
+        "users",
+
+        JSON.stringify(users)
+
     );
 
 }
 
-function loadIngredients(){
+// Display Users
 
-    clearIngredientsList();
+function displayUsers(list){
 
-    ingredients.forEach(function(ingredient){
+    clearUsers();
 
-        const row=document.createElement("div");
-        row.classList.add("ingredient-item");
-
-        const name=document.createElement("p");
-        name.textContent=ingredient.name;
-
-        const btnAdd=document.createElement("button");
-        btnAdd.textContent="+";
-
-        btnAdd.addEventListener("click",function(){
-
-            selectedIngredients.push(ingredient.name);
-
-            displaySelected();
-
-        });
-
-        row.appendChild(name);
-        row.appendChild(btnAdd);
-
-        ingredientsList.appendChild(row);
-
-    });
-
-}
-
-function displaySelected(){
-
-    clearSelected();
-
-    selectedIngredients.forEach(function(item){
-
-        const paragraph=document.createElement("p");
-        paragraph.textContent=item;
-
-        selectedContainer.appendChild(paragraph);
-
-    });
-
-}
-
-function displayDishes(list){
-
-    clearDishes();
-
-    list.forEach(function(dish){
+    list.forEach(function(user){
 
         const card=document.createElement("article");
         card.classList.add("ingredient-card");
@@ -168,26 +102,25 @@ function displayDishes(list){
         info.classList.add("ingredient-info");
 
         const title=document.createElement("h3");
-        title.textContent=dish.name;
+        title.textContent=user.name;
 
-        const description=document.createElement("p");
-        description.textContent=dish.description;
+        const identification=document.createElement("p");
+        identification.textContent="ID: "+user.identification;
 
-        const price=document.createElement("p");
-        price.textContent="$"+dish.price;
+        const phone=document.createElement("p");
+        phone.textContent="Phone: "+user.phone;
+
+        const email=document.createElement("p");
+        email.textContent="Email: "+user.email;
+
+        const gender=document.createElement("p");
+        gender.textContent="Gender: "+user.gender;
 
         info.appendChild(title);
-        info.appendChild(description);
-        info.appendChild(price);
-
-        dish.ingredients.forEach(function(item){
-
-            const ingredient=document.createElement("p");
-            ingredient.textContent=item;
-
-            info.appendChild(ingredient);
-
-        });
+        info.appendChild(identification);
+        info.appendChild(phone);
+        info.appendChild(email);
+        info.appendChild(gender);
 
         const actions=document.createElement("div");
         actions.classList.add("actions");
@@ -197,15 +130,15 @@ function displayDishes(list){
 
         btnDelete.addEventListener("click",function(){
 
-            dishes=dishes.filter(function(item){
+            users=users.filter(function(item){
 
-                return item.id!==dish.id;
+                return item.id!==user.id;
 
             });
 
             saveStorage();
 
-            displayDishes(dishes);
+            displayUsers(users);
 
         });
 
@@ -214,19 +147,24 @@ function displayDishes(list){
         card.appendChild(info);
         card.appendChild(actions);
 
-        dishesContainer.appendChild(card);
+        usersContainer.appendChild(card);
 
     });
 
 }
 
-function saveDish(){
+// Save User
+
+function saveUser(){
 
     if(
+
         inputCode.value===""||
+        inputIdentification.value===""||
         inputName.value===""||
-        inputDescription.value===""||
-        inputPrice.value===""
+        inputPhone.value===""||
+        inputEmail.value===""
+
     ){
 
         alert("Complete all fields");
@@ -235,30 +173,23 @@ function saveDish(){
 
     }
 
-    if(selectedIngredients.length===0){
-
-        alert("Select at least one ingredient");
-
-        return;
-
-    }
-
-    const dish={
+    const user={
 
         id:Date.now(),
         code:inputCode.value,
+        identification:inputIdentification.value,
         name:inputName.value,
-        description:inputDescription.value,
-        price:Number(inputPrice.value),
-        ingredients:selectedIngredients
+        phone:inputPhone.value,
+        email:inputEmail.value,
+        gender:inputGender.value
 
     };
 
-    dishes.push(dish);
+    users.push(user);
 
     saveStorage();
 
-    displayDishes(dishes);
+    displayUsers(users);
 
     clearForm();
 
@@ -266,9 +197,12 @@ function saveDish(){
 
 }
 
+
+// Events
+
 function registerEvents(){
 
-    btnAddDish.addEventListener("click",openModal);
+    btnAddUser.addEventListener("click",openModal);
 
     btnCancel.addEventListener("click",function(){
 
@@ -278,7 +212,7 @@ function registerEvents(){
 
     });
 
-    btnSave.addEventListener("click",saveDish);
+    btnSave.addEventListener("click",saveUser);
 
     if(btnLogout){
 
@@ -294,9 +228,12 @@ function registerEvents(){
 
 }
 
+
+// Execution
+
 function execution(){
 
-    displayDishes(dishes);
+    displayUsers(users);
 
     registerEvents();
 
